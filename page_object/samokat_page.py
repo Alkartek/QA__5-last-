@@ -21,7 +21,7 @@ class MainLocator:
 
 class MainPage(BasePage):
     #Открытие всех ответов на вопросы
-    def open_element_1(self):
+    def check_open_tabs(self):
         element = self.find_element(MainLocator.LOCATOR_ELEMENT)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         seach_element = self.find_element(MainLocator.LOCATOR_Q_1)
