@@ -16,7 +16,7 @@ class ArendaLocator:
     LOCATOR_ASSERT_ORDER = (By.XPATH, '//div[@class="Order_ModalHeader__3FDaJ"]')
     LOCATOR_ASSERT_YES = (By.XPATH, "/html/body/div/div/div[2]/div[5]/div[2]/button[2]")
     LOCATOR_RESULT_OREDER = (By.XPATH, '//div[@class="Order_ModalHeader__3FDaJ"]')
-    LOCATOR_CHOOSE_DATE = (By.XPATH, '//div[@aria-label="Choose воскресенье, 26-е февраля 2023 г."]')
+    LOCATOR_CHOOSE_DATE = (By.XPATH, '//div[@aria-label="Choose среда, 8-е марта 2023 г."]')
     LOCATOR_CHOOSE_TIME = (By.XPATH, "//div[contains(text(),'четверо')]")
     LOCATOR_WAIT = (By.XPATH, '//div[@class="Order_Header__BZXOb"]')
     LOCATOR_RESULT_COMPLITE = (By.XPATH, '//button[contains(text(),"Посмотреть статус")]')
@@ -48,9 +48,9 @@ class ArenfaForm(BasePage):
 
     #Экран подтверждения заказа
     def order_status(self):
-        result_oreder = self.find_element(ArendaLocator.LOCATOR_RESULT_OREDER)
-        result_oreder_text = result_oreder.text()
-        return result_oreder_text
+        result_order = self.find_element(ArendaLocator.LOCATOR_RESULT_OREDER)
+        result_order_text = result_order.text()
+        return result_order_text
     #Кнопка подтвержения заказа
     def last_order_accept(self):
         order_button = self.find_element(ArendaLocator.LOCATOR_RESULT_COMPLITE)
