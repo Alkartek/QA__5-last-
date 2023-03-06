@@ -14,7 +14,7 @@ class ArendaLocator:
     LOCATOR_COMMENT = (By.XPATH, '//input[@placeholder="Комментарий для курьера"]')
     LOCATOR_ORDER_BUTTON = (By.XPATH, '//button[@class="Button_Button__ra12g Button_Middle__1CSJM"]')
     LOCATOR_ASSERT_ORDER = (By.XPATH, '//div[@class="Order_ModalHeader__3FDaJ"]')
-    LOCATOR_ASSERT_YES = (By.XPATH, "/html/body/div/div/div[2]/div[5]/div[2]/button[2]")
+    LOCATOR_ASSERT_YES = (By.XPATH, '//div[@class="Order_Modal__YZ-d3"]/div[@class="Order_Buttons__1xGrp"]/button[@class="Button_Button__ra12g Button_Middle__1CSJM"]')
     LOCATOR_RESULT_OREDER = (By.XPATH, '//div[@class="Order_ModalHeader__3FDaJ"]')
     LOCATOR_CHOOSE_DATE = (By.XPATH, '//div[@aria-label="Choose среда, 8-е марта 2023 г."]')
     LOCATOR_CHOOSE_TIME = (By.XPATH, "//div[contains(text(),'четверо')]")
