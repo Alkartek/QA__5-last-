@@ -12,17 +12,18 @@ class MainLocator:
     LOCATOR_Q_6 = (By.XPATH, '//*[@id="accordion__heading-5"]')
     LOCATOR_Q_7 = (By.XPATH, '//*[@id="accordion__heading-6"]')
     LOCATOR_Q_8 = (By.XPATH, '//*[@id="accordion__heading-7"]')
-    LOCATOR_ELEMENT = (By.XPATH, "/html/body/div/div/div/div[5]/div[1]")
     LOCATOR_ORDER_1 = (By.XPATH, '//button[@class="Button_Button__ra12g"]')
     LOCATOR_ORDER_2 = (By.XPATH, '//button[@class="Button_Button__ra12g Button_Middle__1CSJM"]')
     LOCATOR_SAMOKAT_LOGO = (By.XPATH, '//a[@class="Header_LogoScooter__3lsAR"]')
     LOCATOR_YA_PAGE = (By.XPATH, '//a[@class="Header_LogoYandex__3TSOI"]')
+    LOCATOR_FIEND_YA = (By.XPATH, '//button[@type="submit"]')
+    LOCATOR_SAMOKAT_PAGE = (By.XPATH, '//div[@class="Home_Header__iJKdX"]')
 
 
 class MainPage(BasePage):
     #Открытие всех ответов на вопросы
     def check_open_tabs(self):
-        element = self.find_element(MainLocator.LOCATOR_ELEMENT)
+        element = self.find_element(MainLocator.LOCATOR_Q_1)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         seach_element = self.find_element(MainLocator.LOCATOR_Q_1)
         seach_element.click()
@@ -56,6 +57,13 @@ class MainPage(BasePage):
     def click_to_ya_page(self):
         ya_page_logo = self.find_element(MainLocator.LOCATOR_YA_PAGE)
         ya_page_logo.click()
+
+    def assert_ya_page(self):
+        result = self.find_element(MainLocator.LOCATOR_YA_PAGE)
+        return result.text()
+
+    def asset_samokat_page(self):
+        return self.find_element(MainLocator.LOCATOR_SAMOKAT_LOGO).text()
 
 
 
