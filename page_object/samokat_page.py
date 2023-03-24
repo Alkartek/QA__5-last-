@@ -2,15 +2,11 @@ from selenium.webdriver.common.by import By
 
 from base_page import BasePage
 
-
 class MainLocator:
-    LOCATOR_Q_1 = (By.XPATH, '//*[@id="accordion__heading-0"]')
-    LOCATOR_Q_2 = (By.XPATH, '//*[@id="accordion__heading-1"]')
-    LOCATOR_Q_3 = (By.XPATH, '//*[@id="accordion__heading-2"]')
-    LOCATOR_Q_4 = (By.XPATH, '//*[@id="accordion__heading-3"]')
-    LOCATOR_Q_5 = (By.XPATH, '//*[@id="accordion__heading-4"]')
-    LOCATOR_Q_6 = (By.XPATH, '//*[@id="accordion__heading-5"]')
-    LOCATOR_Q_7 = (By.XPATH, '//*[@id="accordion__heading-6"]')
+
+    LOCATOR_Q_1 = (By.XPATH, '//[@id="accordion__heading-0"]')
+    LOCATOR_Q = (By.ID, "accordion__heading-{}")
+    LOCATOR_ASSERT_TEXT = (By.XPATH, "//div[@id='accordion__heading-1']/text()")
     LOCATOR_Q_8 = (By.XPATH, '//*[@id="accordion__heading-7"]')
     LOCATOR_ORDER_1 = (By.XPATH, '//button[@class="Button_Button__ra12g"]')
     LOCATOR_ORDER_2 = (By.XPATH, '//button[@class="Button_Button__ra12g Button_Middle__1CSJM"]')
@@ -18,30 +14,26 @@ class MainLocator:
     LOCATOR_YA_PAGE = (By.XPATH, '//a[@class="Header_LogoYandex__3TSOI"]')
     LOCATOR_FIEND_YA = (By.XPATH, '//button[@type="submit"]')
     LOCATOR_SAMOKAT_PAGE = (By.XPATH, '//div[@class="Home_Header__iJKdX"]')
+    COOKIE_BUTTON = (By.ID, "rcc-confirm-button")
+    QWES = (By.XPATH, "//*[text()='Вопросы о важном']")
 
 
 class MainPage(BasePage):
-    #Открытие всех ответов на вопросы
-    def check_open_tabs(self):
-        element = self.find_element(MainLocator.LOCATOR_Q_1)
+    def check_open_tables(self, num):
+        element = self.find_element(MainLocator.LOCATOR_Q_8)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
-        seach_element = self.find_element(MainLocator.LOCATOR_Q_1)
-        seach_element.click()
-        seach_element_1 = self.find_element(MainLocator.LOCATOR_Q_2)
-        seach_element_1.click()
-        seach_element_2 = self.find_element(MainLocator.LOCATOR_Q_3)
-        seach_element_2.click()
-        seach_element_3 = self.find_element(MainLocator.LOCATOR_Q_4)
-        seach_element_3.click()
-        seach_element_4 = self.find_element(MainLocator.LOCATOR_Q_5)
-        seach_element_4.click()
-        seach_element_5 = self.find_element(MainLocator.LOCATOR_Q_6)
-        seach_element_5.click()
-        seach_element_6 = self.find_element(MainLocator.LOCATOR_Q_7)
-        seach_element_6.click()
-        seach_element_7 = self.find_element(MainLocator.LOCATOR_Q_8)
-        seach_element_7.click()
-    #Клик по верхней кнопке заказа
+        method, path = MainLocator.LOCATOR_Q
+        path = path.format(num)
+        import time
+        time.sleep(1.3)
+        search_element = self.driver.find_element(method, path)
+        search_element.click()
+
+    def assertion_text(self, locators):
+        import time
+        time.sleep(2)
+        return self.find_element(By.XPATH, locators)
+    # #Клик по верхней кнопке заказа
     def click_to_order_1(self):
         order_button = self.find_element(MainLocator.LOCATOR_ORDER_1)
         order_button.click()
@@ -64,6 +56,13 @@ class MainPage(BasePage):
 
     def asset_samokat_page(self):
         return self.find_element(MainLocator.LOCATOR_SAMOKAT_LOGO).text()
+
+    def remove_cookie(self):
+        cookie_button_element = self.find_element(MainLocator.COOKIE_BUTTON)
+        cookie_button_element.click()
+
+
+
 
 
 
